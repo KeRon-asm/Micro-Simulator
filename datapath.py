@@ -1,3 +1,4 @@
+# Task 4: Single-Cycle Datapath
 # Fetch -> Decode -> Execute -> Writeback (all in one cycle)
 # Target: Y = A·B + C'·D
 import Processor_Parser
@@ -99,33 +100,34 @@ def run_tests():
         status = "PASS" if Y == expected else "FAIL"
         print(f"  Y (t0) = {Y}  Expected = {expected}  [{status}]")
 
-run_tests()
+if __name__ == "__main__":
+    run_tests()
 
-try:
-    print("\n--- Interactive Mode (Datapath) ---")
-    print("Compute Y = A·B + C'·D")
-    A = int(input("  A (decimal): "))
-    B = int(input("  B (decimal): "))
-    C = int(input("  C (decimal): "))
-    D = int(input("  D (decimal): "))
-    fmt_in = input("Display format (DEC/BIN/HEX): ").upper()
+    try:
+        print("\n--- Interactive Mode (Datapath) ---")
+        print("Compute Y = A·B + C'·D")
+        A = int(input("  A (decimal): "))
+        B = int(input("  B (decimal): "))
+        C = int(input("  C (decimal): "))
+        D = int(input("  D (decimal): "))
+        fmt_in = input("Display format (DEC/BIN/HEX): ").upper()
 
-    program = [
-        ControlUnit.encode(0, 0, 4, 0, 1),
-        ControlUnit.encode(0, 1, 6, 2, 3),
-        ControlUnit.encode(1, 0, 0, 4, 6),
-    ]
+        program = [
+            ControlUnit.encode(0, 0, 4, 0, 1),
+            ControlUnit.encode(0, 1, 6, 2, 3),
+            ControlUnit.encode(1, 0, 0, 4, 6),
+        ]
 
-    cpu = Datapath()
-    cpu.load_registers({0: A, 1: B, 2: C, 3: D})
-    print()
-    for instr in program:
-        cpu.execute(instr)
+        cpu = Datapath()
+        cpu.load_registers({0: A, 1: B, 2: C, 3: D})
+        print()
+        for instr in program:
+            cpu.execute(instr)
 
-    result, cycles, valid = cpu.get_output(fmt_in)
-    print(f"\n--- Final State ({fmt_in}) ---")
-    print(result)
-    print(f"\nY = t0 = {cpu.reg_file.registers[0]}")
+        result, cycles, valid = cpu.get_output(fmt_in)
+        print(f"\n--- Final State ({fmt_in}) ---")
+        print(result)
+        print(f"\nY = t0 = {cpu.reg_file.registers[0]}")
 
-except (ValueError, EOFError):
-    print("Invalid input")
+    except (ValueError, EOFError):
+        print("Invalid input")
