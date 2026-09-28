@@ -1,4 +1,3 @@
-# Ke'Ron Clark -> 002639702
 # Task 3: Memory Hierarchy Simulation
 # SSD -> DRAM -> L3 -> L2 -> L1 -> CPU
 from Processor_Parser import Parser
