@@ -1,4 +1,4 @@
-# CSC 4210/6210 - Task 4: ALU
+# Task 4: ALU
 # Supports AND, OR with optional input inversion (NOT via control signal)
 # NOT is NOT a separate instruction — it is an ALU control signal (invert_a)
 import Processor_Parser
