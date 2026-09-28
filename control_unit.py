@@ -86,20 +86,21 @@ def run_tests():
         print(f"\n  {desc}")
         print(result)
 
-run_tests()
+if __name__ == "__main__":
+    run_tests()
 
-try:
-    print("\n--- Interactive Mode (ControlUnit) ---")
-    op_in  = int(input("Opcode (0=AND, 1=OR): "))
-    inv_in = int(input("Invert A (0=No, 1=Yes): "))
-    rd_in  = int(input("Destination reg (0-7): "))
-    rs1_in = int(input("Source reg 1 (0-7): "))
-    rs2_in = int(input("Source reg 2 (0-7): "))
+    try:
+        print("\n--- Interactive Mode (ControlUnit) ---")
+        op_in  = int(input("Opcode (0=AND, 1=OR): "))
+        inv_in = int(input("Invert A (0=No, 1=Yes): "))
+        rd_in  = int(input("Destination reg (0-7): "))
+        rs1_in = int(input("Source reg 1 (0-7): "))
+        rs2_in = int(input("Source reg 2 (0-7): "))
 
-    instr = ControlUnit.encode(op_in, inv_in, rd_in, rs1_in, rs2_in)
-    cu = ControlUnit(instr)
-    result, alu_op, reg_write = cu.get_output()
-    print(f"\nEncoded instruction: 0x{instr:08X}")
-    print(result)
-except (ValueError, EOFError):
-    print("Invalid input")
+        instr = ControlUnit.encode(op_in, inv_in, rd_in, rs1_in, rs2_in)
+        cu = ControlUnit(instr)
+        result, alu_op, reg_write = cu.get_output()
+        print(f"\nEncoded instruction: 0x{instr:08X}")
+        print(result)
+    except (ValueError, EOFError):
+        print("Invalid input")
