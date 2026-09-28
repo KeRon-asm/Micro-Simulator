@@ -1,4 +1,3 @@
-# CSC 4210/6210 - Task 4: Single-Cycle Datapath
 # Fetch -> Decode -> Execute -> Writeback (all in one cycle)
 # Target: Y = A·B + C'·D
 import Processor_Parser
