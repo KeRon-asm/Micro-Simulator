@@ -1,4 +1,4 @@
-# CSC 4210/6210 - Task 4: Register File
+# Task 4: Register File
 # 8 x 32-bit general-purpose registers (t0-t7)
 from Processor_Parser import Parser
 
