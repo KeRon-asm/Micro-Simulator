@@ -89,18 +89,17 @@ def run_tests():
         p = Parser(t)
         res, o, s = p.get_output("HEX")
         print(f"In: {t} | Out: {res} | O: {o} | S: {s}")
-run_tests()    
-try:
-    val_in = int(input("Enter decimal: "))
-    fmt_in = input("Format (DEC, BIN, HEX): ").upper()
+if __name__ == "__main__":
+    run_tests()    
+    try:
+        val_in = int(input("Enter decimal: "))
+        fmt_in = input("Format (DEC, BIN, HEX): ").upper()
 
-    processor = Parser(val_in)
-    val_out, ovf, sat = processor.get_output(fmt_in)
+        processor = Parser(val_in)
+        val_out, ovf, sat = processor.get_output(fmt_in)
 
-    print(f"\nValue: {val_out}")
-    print(f"Overflow: {ovf}")
-    print(f"Saturated: {sat}")
-except ValueError:
-    print("Invalid input")
-    
-
+        print(f"\nValue: {val_out}")
+        print(f"Overflow: {ovf}")
+        print(f"Saturated: {sat}")
+    except ValueError:
+        print("Invalid input")
