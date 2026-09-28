@@ -64,20 +64,21 @@ def run_tests():
         print(f"  {desc}")
         print(f"    Result (BIN): {out}  Zero:{z}\n")
 
-run_tests()
+if __name__ == "__main__":
+    run_tests()
 
-try:
-    print("\n--- Interactive Mode (ALU) ---")
-    a_in   = int(input("Input A (decimal): "))
-    b_in   = int(input("Input B (decimal): "))
-    op_in  = int(input("ALU op (0=AND, 1=OR): "))
-    inv_in = int(input("Invert A? (0=No, 1=Yes): "))
-    fmt_in = input("Format (DEC/BIN/HEX): ").upper()
+    try:
+        print("\n--- Interactive Mode (ALU) ---")
+        a_in   = int(input("Input A (decimal): "))
+        b_in   = int(input("Input B (decimal): "))
+        op_in  = int(input("ALU op (0=AND, 1=OR): "))
+        inv_in = int(input("Invert A? (0=No, 1=Yes): "))
+        fmt_in = input("Format (DEC/BIN/HEX): ").upper()
 
-    alu = ALU()
-    result, zero = alu.execute(a_in, b_in, op_in, inv_in)
-    disp, z, ovf = alu.get_output(fmt_in)
-    print(f"\nResult: {disp}")
-    print(f"Zero: {z}  Overflow: {ovf}")
-except (ValueError, EOFError):
-    print("Invalid input")
+        alu = ALU()
+        result, zero = alu.execute(a_in, b_in, op_in, inv_in)
+        disp, z, ovf = alu.get_output(fmt_in)
+        print(f"\nResult: {disp}")
+        print(f"Zero: {z}  Overflow: {ovf}")
+    except (ValueError, EOFError):
+        print("Invalid input")
