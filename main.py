@@ -77,3 +77,13 @@ sim.read(10)
 
 # --- Read addr 1 again (may still be in L1 or L2) ---
 sim.read(1)
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 5. FINAL STATE
+# ──────────────────────────────────────────────────────────────────────────────
+
+result, hits, misses = sim.get_output("HEX")
+print("\n" + "─" * 62)
+print("  FINAL STATE")
+print("─" * 62)
+print(result)
