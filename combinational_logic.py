@@ -1,5 +1,3 @@
-# Ke'Ron Clark, 002639702
-
 #SPLIT TURNS STRINGS -> LISTS
 #JOIN TURNS LISTS -> STRINGS
 def get_num_variables():
