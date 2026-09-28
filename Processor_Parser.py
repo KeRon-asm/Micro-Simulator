@@ -1,4 +1,3 @@
-# Ke'Ron Clark, 002639702
 class Parser: 
     def __init__(self, value):
         min_int32 = -(2**31)
