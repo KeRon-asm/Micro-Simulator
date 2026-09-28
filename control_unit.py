@@ -1,4 +1,4 @@
-# CSC 4210/6210 - Task 4: Control Unit
+# Task 4: Control Unit
 # Decodes 32-bit instruction fields and generates control signals
 #
 # Instruction Encoding (32-bit):
