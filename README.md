@@ -1,8 +1,8 @@
-# MicroSim
+# Micro-Simulator
 
 **A single-cycle processor and memory hierarchy simulator, built from the gates up in Python.**
 
-MicroSim models how a CPU actually runs a program: a 32-bit instruction is fetched, decoded into control signals, executed by an ALU, and written back to a register file, all in a single clock cycle. A separate memory hierarchy simulator shows how that instruction travels from SSD through DRAM and three levels of cache before it reaches the CPU, and what it costs in cycles.
+Micro-Simulator models how a CPU actually runs a program: a 32-bit instruction is fetched, decoded into control signals, executed by an ALU, and written back to a register file, all in a single clock cycle. A separate memory hierarchy simulator shows how that instruction travels from SSD through DRAM and three levels of cache before it reaches the CPU, and what it costs in cycles.
 
 Every component is built on the same foundation: a 32-bit two's complement integer unit with overflow detection and saturation, so values behave like real hardware registers rather than unbounded Python integers.
 
