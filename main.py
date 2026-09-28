@@ -1,5 +1,4 @@
 """
-Ke'Ron Clark, 002639702 
 Task 3: Memory Hierarchy Simulation
 main.py  —  Demo driver
 
