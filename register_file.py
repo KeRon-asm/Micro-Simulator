@@ -66,17 +66,18 @@ def run_tests():
     print(f"\nRegisters (HEX): W:{we} Valid:{valid}")
     print(result)
 
-run_tests()
+if __name__ == "__main__":
+    run_tests()
 
-try:
-    print("\n--- Interactive Mode (RegisterFile) ---")
-    fmt_in = input("Display format (DEC/BIN/HEX): ").upper()
-    rf = RegisterFile()
-    for i in range(8):
-        val = int(input(f"  t{i} value: "))
-        rf.load(i, val)
-    result, we, valid = rf.get_output(fmt_in)
-    print(f"\nRegisters ({fmt_in}):")
-    print(result)
-except (ValueError, EOFError):
-    print("Invalid input")
+    try:
+        print("\n--- Interactive Mode (RegisterFile) ---")
+        fmt_in = input("Display format (DEC/BIN/HEX): ").upper()
+        rf = RegisterFile()
+        for i in range(8):
+            val = int(input(f"  t{i} value: "))
+            rf.load(i, val)
+        result, we, valid = rf.get_output(fmt_in)
+        print(f"\nRegisters ({fmt_in}):")
+        print(result)
+    except (ValueError, EOFError):
+        print("Invalid input")
