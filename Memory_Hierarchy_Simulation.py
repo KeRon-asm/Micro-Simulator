@@ -190,42 +190,43 @@ def run_tests():
     print(result)
     print(f"\nTotal Hits: {hits} | Total Misses: {misses}")
 
-#run_tests()
+if __name__ == "__main__":
+    #run_tests()
 
-try:
-    print("\n--- Interactive Mode ---")
-    ssd_in  = int(input("SSD capacity (instructions):  "))
-    dram_in = int(input("DRAM capacity (instructions): "))
-    l3_in   = int(input("L3 capacity (instructions):   "))
-    l2_in   = int(input("L2 capacity (instructions):   "))
-    l1_in   = int(input("L1 capacity (instructions):   "))
-    pol_in  = input("Eviction policy (lru/fifo/random): ").lower()
-    fmt_in  = input("Display format (DEC/BIN/HEX): ").upper()
+    try:
+        print("\n--- Interactive Mode ---")
+        ssd_in  = int(input("SSD capacity (instructions):  "))
+        dram_in = int(input("DRAM capacity (instructions): "))
+        l3_in   = int(input("L3 capacity (instructions):   "))
+        l2_in   = int(input("L2 capacity (instructions):   "))
+        l1_in   = int(input("L1 capacity (instructions):   "))
+        pol_in  = input("Eviction policy (lru/fifo/random): ").lower()
+        fmt_in  = input("Display format (DEC/BIN/HEX): ").upper()
 
-    sim = MemoryHierarchy(ssd_in, dram_in, l3_in, l2_in, l1_in, policy=pol_in)
-    if sim.valid:
-        num = int(input("How many instructions to load into SSD? "))
-        program = [0xADD10001 + i * 0x1000 for i in range(num)]
-        sim.load_ssd(program)
+        sim = MemoryHierarchy(ssd_in, dram_in, l3_in, l2_in, l1_in, policy=pol_in)
+        if sim.valid:
+            num = int(input("How many instructions to load into SSD? "))
+            program = [0xADD10001 + i * 0x1000 for i in range(num)]
+            sim.load_ssd(program)
 
-        while True:
-            op = input("\nOperation (READ/WRITE/DONE): ").upper()
-            if op == "DONE":
-                break
-            elif op == "READ":
-                addr = int(input("  Address: "))
-                sim.read(addr)
-            elif op == "WRITE":
-                addr = int(input("  Address: "))
-                val  = int(input("  Value (decimal): "))
-                sim.write(addr, val)
-            else:
-                print("  Unknown operation")
+            while True:
+                op = input("\nOperation (READ/WRITE/DONE): ").upper()
+                if op == "DONE":
+                    break
+                elif op == "READ":
+                    addr = int(input("  Address: "))
+                    sim.read(addr)
+                elif op == "WRITE":
+                    addr = int(input("  Address: "))
+                    val  = int(input("  Value (decimal): "))
+                    sim.write(addr, val)
+                else:
+                    print("  Unknown operation")
 
-        result, hits, misses = sim.get_output(fmt_in)
-        print(f"\n--- Final State ({fmt_in}) ---")
-        print(result)
-        print(f"\nTotal Hits: {hits} | Total Misses: {misses}")
+            result, hits, misses = sim.get_output(fmt_in)
+            print(f"\n--- Final State ({fmt_in}) ---")
+            print(result)
+            print(f"\nTotal Hits: {hits} | Total Misses: {misses}")
 
-except (ValueError, EOFError):
-    print("Invalid input")
+    except (ValueError, EOFError):
+        print("Invalid input")
